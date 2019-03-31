@@ -1,0 +1,29 @@
+.modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	content: '';
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.modal__container {
+	position: fixed;
+	display: block;	
+	width: 400px;
+	height: 200px;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #fff;
+}
+
+.modal__title {
+	padding-bottom: 10px;
+	border-bottom: 1px solid gray;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Vue Dynamic Modal Window</title>
+</head>
+<body>
+	<h1>Vue Dynamic Modal Window</h1>
+
+	<div id="modalTester">
+		<button
+			@click="open">
+			Open modal window
+		</button>
+
+		<modal></modal>
+	</div>
+
+	<script type="text/x-template" id="modal">
+		<div
+			v-if="active"
+			class="modal"
+			@click.self="close">
+			<div class="modal__container">
+				<h2 class="modal__title">Modal window</h2>
+
+				<component
+					:is="component"
+					:data="data">
+				</component>
+			</div>
+		</div>    
+	</script>
+
+	<script type="text/x-template" id="someExample">
+		<div class="some-example">
+			<h2 class="some-example__title">Component title</h2>
+
+			<p class="some-example__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, nostrum.</p>
+
+			<p class="some-example__paragraph">Sit, quae, esse optio alias consectetur quod veniam ipsam odio!</p>
+		</div>    
+	</script>
+
+	<script src="js/libs/vue.js"></script>
+	<script src="js/modalTester.js"></script>
+</body>
+</html>
