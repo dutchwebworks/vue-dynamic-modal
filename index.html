@@ -8,14 +8,27 @@
 <body>
 	<h1>Vue Dynamic Modal Window</h1>
 
+	<p>A simple Vue modal window component that loads in other components as its contents.</p>
+
+	<p>The modal window component is only used once.</p>
+
 	<div id="modalTester">
 		<button
-			@click="open">
-			Open modal window
+			@click="openExample">
+			Open "some example" -modal
+		</button>
+
+		<button
+			@click="openInfo">
+			Open "information" -modal
 		</button>
 
 		<modal></modal>
 	</div>
+
+	<p>
+		Inspired by <a href="https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1">https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1</a>
+	</p>
 
 	<script type="text/x-template" id="modal">
 		<div
@@ -23,7 +36,7 @@
 			class="modal"
 			@click.self="close">
 			<div class="modal__container">
-				<h2 class="modal__title">Modal window</h2>
+				<h2 class="modal__title">{{ title }}</h2>
 
 				<component
 					:is="component"
@@ -35,11 +48,19 @@
 
 	<script type="text/x-template" id="someExample">
 		<div class="some-example">
-			<h2 class="some-example__title">Component title</h2>
+			<h3 class="some-example__title">{{ title }}</h3>
 
 			<p class="some-example__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, nostrum.</p>
 
 			<p class="some-example__paragraph">Sit, quae, esse optio alias consectetur quod veniam ipsam odio!</p>
+		</div>    
+	</script>
+
+	<script type="text/x-template" id="someInfo">
+		<div class="some-info">
+			<h3 class="some-info__title">{{ title }}</h3>
+
+			<p class="some-info__paragraph">This is some information you got there chief</p>
 		</div>    
 	</script>
 

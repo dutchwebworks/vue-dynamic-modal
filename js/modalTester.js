@@ -27,11 +27,8 @@ Vue.component("modal", {
 		close: function() {
 			this.active = false;
 		},
-		toggle: function() {
-			this.active = !this.active;
-		},
 		set: function(title, data, name) {
-			this.title = "Test";
+			this.title = title;
 			this.data = data;
 			this.component = data;
 		}
@@ -40,21 +37,45 @@ Vue.component("modal", {
 
 Vue.component("someExample", {
 	name: "SomeExample",
-	template: "#someExample"
+	template: "#someExample",
+	data: function() {
+		return {
+			title: "Example title",
+			data: {}
+		}
+	}
+});
+
+Vue.component("someInfo", {
+	name: "SomeInfo",
+	template: "#someInfo",
+	data: function() {
+		return {
+			title: "Some information",
+			data: {}
+		}
+	}
 });
 
 var modalTester = new Vue({
 	el: "#modalTester",
 	name: "ModalTester",
-	data: function() {
-		return {
-			title: "Hi from component"
-		}
+	data: {
+		title: "Hi from main instance"
 	},
+	// data: function() {
+	// 	return {
+	// 		title: "Hi from main instance"
+	// 	}
+	// },
 	methods: {
-		open: function() {
+		openExample: function() {
 			Hub.$emit("open-modal");
 			Hub.$emit("set-modal-data", this.data, "someExample");
+		},
+		openInfo: function() {
+			Hub.$emit("open-modal");
+			Hub.$emit("set-modal-data", this.data, "someInfo");
 		}
 	}
 });

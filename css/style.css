@@ -17,7 +17,7 @@
 	position: fixed;
 	display: block;	
 	width: 400px;
-	height: 200px;
+	min-height: 200px;
 	border-radius: 10px;
 	padding: 20px;
 	background-color: #fff;
