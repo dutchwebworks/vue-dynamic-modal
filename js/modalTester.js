@@ -6,7 +6,6 @@ Vue.component("modal", {
 	data: function() {
 		return {
 			active: false,
-			data: {},
 			title: null
 		}
 	},
@@ -27,32 +26,35 @@ Vue.component("modal", {
 		close: function() {
 			this.active = false;
 		},
-		set: function(title, data, name) {
-			this.title = title;
-			this.data = data;
-			this.component = data;
+		set: function(payload) {
+			this.title = payload.title;
+			this.component = payload.componentName;
 		}
 	}
 });
 
-Vue.component("someExample", {
-	name: "SomeExample",
-	template: "#someExample",
+Vue.component("brochureModalContent", {
+	name: "Brochure",
+	template: "#brochureModalContent",
 	data: function() {
 		return {
-			title: "Example title",
-			data: {}
+			title: "Example"
 		}
 	}
 });
 
-Vue.component("someInfo", {
-	name: "SomeInfo",
-	template: "#someInfo",
+Vue.component("informationModalContent", {
+	name: "Information",
+	template: "#informationModalContent",
 	data: function() {
 		return {
-			title: "Some information",
-			data: {}
+			title: "Information",
+			awake: false
+		}
+	},
+	methods: {
+		toggleAwake: function() {
+			this.awake = !this.awake;
 		}
 	}
 });
@@ -60,17 +62,20 @@ Vue.component("someInfo", {
 var modalTester = new Vue({
 	el: "#modalTester",
 	name: "ModalTester",
-	data: {
-		title: "Hi from main instance"
-	},
 	methods: {
-		openExample: function() {
+		openBrochureModal: function() {
 			Hub.$emit("open-modal");
-			Hub.$emit("set-modal-data", this.data, "someExample");
+			Hub.$emit("set-modal-data", {
+				title: "Whould you like to receive our brochure?",
+				componentName: "brochureModalContent"
+			});
 		},
-		openInfo: function() {
+		openInformationModal: function() {
 			Hub.$emit("open-modal");
-			Hub.$emit("set-modal-data", this.data, "someInfo");
+			Hub.$emit("set-modal-data", {
+				title: "This information is classified!",
+				componentName: "informationModalContent"
+			});
 		}
 	}
 });

@@ -14,13 +14,13 @@
 
 	<div id="modalTester">
 		<button
-			@click="openExample">
-			Open "some example" -modal
+			v-on:click="openBrochureModal">
+			Open the "brochure" -modal
 		</button>
 
 		<button
-			@click="openInfo">
-			Open "information" -modal
+			v-on:click="openInformationModal">
+			Open the "information" -modal
 		</button>
 
 		<modal></modal>
@@ -38,33 +38,50 @@
 		<div
 			v-if="active"
 			class="modal"
-			@click.self="close">
+			v-on:click.self="close">
 			<div class="modal__container">
 				<h2 class="modal__title">{{ title }}</h2>
 
-				<component
-					:is="component"
-					:data="data">
-				</component>
+				<component v-bind:is="component"></component>
+
+				<button
+					v-on:click="close">
+					Close modal
+				</button>
 			</div>
 		</div>    
 	</script>
 
-	<script type="text/x-template" id="someExample">
-		<div class="some-example">
-			<h3 class="some-example__title">{{ title }}</h3>
+	<script type="text/x-template" id="brochureModalContent">
+		<div class="brochure">
+			<h3 class="brochure__title">{{ title }}</h3>
 
-			<p class="some-example__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, nostrum.</p>
+			<p class="brochure__paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, nostrum.</p>
 
-			<p class="some-example__paragraph">Sit, quae, esse optio alias consectetur quod veniam ipsam odio!</p>
+			<p class="brochure__paragraph">Sit, quae, esse optio alias consectetur quod veniam ipsam odio!</p>
 		</div>    
 	</script>
 
-	<script type="text/x-template" id="someInfo">
-		<div class="some-info">
-			<h3 class="some-info__title">{{ title }}</h3>
+	<script type="text/x-template" id="informationModalContent">
+		<div class="information">
+			<h3 class="information__title">{{ title }}</h3>
 
-			<p class="some-info__paragraph">This is some information you got there chief</p>
+			<p class="information__paragraph">This is some information you got there chief</p>
+
+			<p>
+				<button 
+					v-on:click="toggleAwake">
+					Toggle `awake` boolean
+				</button>
+			</p>
+
+			<p v-show="awake">
+				We are awake!!
+			</p>
+
+			<p v-show="!awake">
+				You are a sleep!
+			</p>
 		</div>    
 	</script>
 
