@@ -16,14 +16,21 @@
 .modal__container {
 	position: fixed;
 	display: block;	
-	width: 400px;
+	width: 500px;
 	min-height: 200px;
 	border-radius: 10px;
 	padding: 20px;
 	background-color: #fff;
 }
 
-.modal__title {
+.modal__header {
+	display: flex;
+	justify-content: space-between;
 	padding-bottom: 10px;
 	border-bottom: 1px solid gray;
 }
+
+.modal__title {
+	margin: 0;
+}
+

@@ -20,15 +20,13 @@ Vue.component("modal", {
 		Hub.$off("open-modal", this.open);
 	},
 	methods: {
-		open: function() {
+		open: function(payload) {
 			this.active = true;
+			this.title = payload.title;
+			this.component = payload.componentName;
 		},
 		close: function() {
 			this.active = false;
-		},
-		set: function(payload) {
-			this.title = payload.title;
-			this.component = payload.componentName;
 		}
 	}
 });
@@ -64,17 +62,15 @@ var modalTester = new Vue({
 	name: "ModalTester",
 	methods: {
 		openBrochureModal: function() {
-			Hub.$emit("open-modal");
-			Hub.$emit("set-modal-data", {
-				title: "Whould you like to receive our brochure?",
-				componentName: "brochureModalContent"
+			Hub.$emit("open-modal", {
+				componentName: "brochureModalContent",			
+				title: "Whould you like to receive our brochure?"
 			});
 		},
 		openInformationModal: function() {
-			Hub.$emit("open-modal");
-			Hub.$emit("set-modal-data", {
-				title: "This information is classified!",
-				componentName: "informationModalContent"
+			Hub.$emit("open-modal", {
+				componentName: "informationModalContent",
+				title: "This information is classified!"
 			});
 		}
 	}

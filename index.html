@@ -6,7 +6,7 @@
 	<title>Vue Dynamic Modal Window</title>
 </head>
 <body>
-	<h1>Vue Dynamic Modal Window</h1>
+	<h1 id="dynamic-modal">Vue Dynamic Modal Window</h1>
 
 	<p>A simple Vue modal window component that loads in other components as its contents.</p>
 
@@ -39,15 +39,25 @@
 			v-if="active"
 			class="modal"
 			v-on:click.self="close">
-			<div class="modal__container">
-				<h2 class="modal__title">{{ title }}</h2>
+			<div				
+				role="dialog"
+				aria-modal="true"
+				id="modal"
+				aria-labeldby="dynamic-modal"
+				class="modal__container">
+				<div class="modal__header">
+					<h2 class="modal__title">{{ title }}</h2>
+
+					<div class="modal__close">
+						<button
+							v-on:click="close"
+							aria-label="Close modal">
+							&times;
+						</button>
+					</div>
+				</div>
 
 				<component v-bind:is="component"></component>
-
-				<button
-					v-on:click="close">
-					Close modal
-				</button>
 			</div>
 		</div>    
 	</script>
