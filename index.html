@@ -6,39 +6,51 @@
 	<title>Vue Dynamic Modal Window</title>
 </head>
 <body>
-	<h1 id="dynamic-modal">Vue Dynamic Modal Window</h1>
+	<div id="app" class="wrapper">
+		<header>			
+			<h1 id="dynamic-modal">Vue Dynamic Modal Window</h1>
 
-	<p>A simple Vue modal window component that loads in other components as its contents.</p>
+			<p>A simple Vue modal window component that loads in other components as its contents.</p>
 
-	<p>The modal window component is only used once.</p>
+			<p>The modal window component is only used once.</p>
+		</header>
 
-	<div id="modalTester">
-		<button
-			v-on:click="openBrochureModal">
-			Open the "brochure" -modal
-		</button>
+		<main>
+			<button
+				v-on:click="openBrochureModal"
+				v-on:keypress.enter="openBrochureModal"
+				v-on:keypress.space="openBrochureModal">
+				Open the "brochure" -modal
+			</button>
 
-		<button
-			v-on:click="openInformationModal">
-			Open the "information" -modal
-		</button>
+			<button
+				v-on:click="openInformationModal"
+				v-on:keypress.enter="openInformationModal"
+				v-on:keypress.space="openInformationModal">
+				Open the "information" -modal
+			</button>
+		</main>
+
+		<footer>
+			<p>
+				Inspired by <a href="https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1">https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1</a>
+			</p>
+
+			<p>
+				<a href="https://github.com/dutchwebworks/vue-dynamic-modal">View on Github</a>
+			</p>
+
+		</footer>
 
 		<modal></modal>
 	</div>
-
-	<p>
-		Inspired by <a href="https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1">https://laracasts.com/discuss/channels/vue/dynamic-modal-content-with-vuejs?page=1</a>
-	</p>
-
-	<p>
-		<a href="https://github.com/dutchwebworks/vue-dynamic-modal">View on Github</a>
-	</p>
 
 	<script type="text/x-template" id="modal">
 		<div
 			v-if="active"
 			class="modal"
-			v-on:click.self="close">
+			v-on:click.self="close"
+			v-on:keypress.esc="close">
 			<div				
 				role="dialog"
 				aria-modal="true"
@@ -86,16 +98,16 @@
 			</p>
 
 			<p v-show="awake">
-				We are awake!!
+				Yes yes, we are AWAKE!!
 			</p>
 
 			<p v-show="!awake">
-				You are a sleep!
+				You are so sleapy!!
 			</p>
 		</div>    
 	</script>
 
 	<script src="js/libs/vue.js"></script>
-	<script src="js/modalTester.js"></script>
+	<script src="js/modal.js"></script>
 </body>
 </html>

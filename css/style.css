@@ -1,3 +1,28 @@
+body {
+	font-family: sans-serif;
+}
+
+h1,
+a {
+	color: deeppink;
+}
+
+button {
+	color: #fff;
+	border: 0;
+	padding: 10px 15px;
+	font-size: 16px;
+	border-radius: 10px;
+	background-color: deepskyblue;
+	cursor: pointer;
+}
+
+.wrapper {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+
 .modal {
 	position: fixed;
 	top: 0;
@@ -21,6 +46,7 @@
 	border-radius: 10px;
 	padding: 20px;
 	background-color: #fff;
+	box-sizing: border-box;
 }
 
 .modal__header {

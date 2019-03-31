@@ -1,4 +1,4 @@
-var Hub = new Vue();
+var Hub = new Vue(); // Used as Vue event bus
 
 Vue.component("modal", {
 	name: "Modal",
@@ -58,8 +58,8 @@ Vue.component("informationModalContent", {
 });
 
 var modalTester = new Vue({
-	el: "#modalTester",
-	name: "ModalTester",
+	el: "#app",
+	name: "app",
 	methods: {
 		openBrochureModal: function() {
 			Hub.$emit("open-modal", {
