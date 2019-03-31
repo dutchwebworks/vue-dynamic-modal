@@ -63,11 +63,6 @@ var modalTester = new Vue({
 	data: {
 		title: "Hi from main instance"
 	},
-	// data: function() {
-	// 	return {
-	// 		title: "Hi from main instance"
-	// 	}
-	// },
 	methods: {
 		openExample: function() {
 			Hub.$emit("open-modal");
