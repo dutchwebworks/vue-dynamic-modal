@@ -11,12 +11,10 @@ Vue.component("modal", {
 	},
 	mounted: function() {
 		this.$nextTick(function(){
-			Hub.$on("set-modal-data", this.set);
 			Hub.$on("open-modal", this.open);
 		}.bind(this));
 	},
 	destroyed: function() {
-		Hub.$off("set-modal-data", this.set);
 		Hub.$off("open-modal", this.open);
 	},
 	methods: {
@@ -27,6 +25,7 @@ Vue.component("modal", {
 		},
 		close: function() {
 			this.active = false;
+			this.title = null;
 		}
 	}
 });
